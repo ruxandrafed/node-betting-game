@@ -1,0 +1,25 @@
+{
+  "name": "node-betting-game",
+  "version": "1.0.0",
+  "description": "Simple betting game created with Node.js",
+  "main": "game.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ruxandrafed/node-betting-game.git"
+  },
+  "keywords": [
+    "betting"
+  ],
+  "author": "Ruxandra Fediuc",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ruxandrafed/node-betting-game/issues"
+  },
+  "homepage": "https://github.com/ruxandrafed/node-betting-game",
+  "dependencies": {
+    "sync-prompt": "~0.4.2"
+  }
+}
