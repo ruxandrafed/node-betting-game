@@ -1,4 +1,5 @@
 var prompt = require('sync-prompt').prompt;
+var colors = require('colors');
 
 var playerMoney = 100;
 
@@ -9,11 +10,13 @@ function generateRandomNo() {
 function getUserBet(min, max) {
   if (min == max) {
     var userBet = min;
-    console.log('Placed a bet for ' + userBet + ' $!');
+    var message = 'Placed a bet for ' + userBet + ' $!';
+    console.log(message.green);
     return userBet;
   } else {
     do {
-      var userBet = prompt('Place a bet ($' + min + '-$' + max + '):');
+      var message = 'Place a bet ($' + min + '-$' + max + '):';
+      var userBet = prompt(message.green);
     } while (userBet < min || userBet > max);
     return userBet;
   }
@@ -21,7 +24,8 @@ function getUserBet(min, max) {
 
 function getUserGuess() {
   do {
-    var userGuess = prompt('Guess a no. between 1 and 10:');
+    var message = 'Guess a no. between 1 and 10:';
+    var userGuess = prompt(message.green);
 } while (userGuess < 1 || userGuess > 10);
   return userGuess
 }
@@ -34,16 +38,20 @@ function gameRound() {
 
   if (randomNo === userGuess) {
     playerMoney *= 2;
-    console.log('The number was: ' + randomNo + '. Awesome, you guessed it! You now have ' + playerMoney + '$!')
+    var message = 'The number was: ' + randomNo + '. Awesome, you guessed it! You now have ' + playerMoney + '$!';
+    console.log(message.rainbow)
   } else if (Math.abs(userGuess - randomNo) > 1) {
     playerMoney -= userBet;
     if (playerMoney >= 5) {
-      console.log('The number was: ' + randomNo + '. Bummer, you lost your bet! You now have ' + playerMoney + '$!');
+      var message = 'The number was: ' + randomNo + '. Bummer, you lost your bet! You now have ' + playerMoney + '$!';
+      console.log(message.red);
     } else {
-      console.log('You only have ' + playerMoney + '$ left, so you can\'t start another round! You lost!');
+      var message = 'You only have ' + playerMoney + '$ left, so you can\'t start another round! You lost!';
+      console.log(message.grey);
     }
   } else {
-    console.log('The number was: ' + randomNo + '. You were close! No loss, no gain; you stil have ' + playerMoney + '$!')
+    var message = 'The number was: ' + randomNo + '. You were close! No loss, no gain; you stil have ' + playerMoney + '$!';
+    console.log(message.yellow)
   }
 };
 
